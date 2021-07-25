@@ -2,7 +2,7 @@
 
 namespace VideoStock.Api.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class BaseApiController : ControllerBase
     {

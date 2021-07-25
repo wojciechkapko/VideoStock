@@ -1,9 +1,8 @@
-﻿using System;
+﻿using Microsoft.Azure.Cosmos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Azure.Cosmos;
 using VideoStock.Domain;
 
 namespace VideoStock.Persistence
@@ -26,11 +25,11 @@ namespace VideoStock.Persistence
         {
             await _container.DeleteItemAsync<Content>(id, new PartitionKey(id));
         }
-        public async Task<Content> GetAsync(string id)
+        public async Task<Content> GetAsync(Guid id)
         {
             try
             {
-                var response = await _container.ReadItemAsync<Content>(id, new PartitionKey(id));
+                var response = await _container.ReadItemAsync<Content>(id.ToString(), new PartitionKey(id.ToString()));
                 return response.Resource;
             }
             catch (CosmosException) //For handling item not found and other exceptions

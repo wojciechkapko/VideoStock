@@ -22,7 +22,7 @@ namespace VideoStock.Api.Controllers
         }
         // GET api/items/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(string id)
+        public async Task<IActionResult> Get(Guid id)
         {
             return Ok(await _cosmosDbService.GetAsync(id));
         }

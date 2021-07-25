@@ -8,7 +8,7 @@ namespace VideoStock.Persistence
     public interface ICosmosDbService
     {
         Task<IEnumerable<Content>> GetMultipleAsync(string query);
-        Task<Content> GetAsync(string id);
+        Task<Content> GetAsync(Guid id);
         Task AddAsync(Content item);
         Task UpdateAsync(string id, Content item);
         Task DeleteAsync(string id);
